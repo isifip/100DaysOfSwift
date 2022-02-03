@@ -58,13 +58,29 @@
 			children = (
 				C725B36427ABF5BE008A462F /* AppDelegate.swift */,
 				C725B36627ABF5BE008A462F /* SceneDelegate.swift */,
-				C725B36827ABF5BE008A462F /* ViewController.swift */,
-				C725B36A27ABF5BE008A462F /* Main.storyboard */,
+				C725B37927ABF732008A462F /* Controller */,
+				C725B37827ABF72B008A462F /* StoryBoards */,
 				C725B36D27ABF5BF008A462F /* Assets.xcassets */,
-				C725B36F27ABF5BF008A462F /* LaunchScreen.storyboard */,
 				C725B37227ABF5BF008A462F /* Info.plist */,
 			);
 			path = "Project2-Guesstheflag";
+			sourceTree = "<group>";
+		};
+		C725B37827ABF72B008A462F /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				C725B36A27ABF5BE008A462F /* Main.storyboard */,
+				C725B36F27ABF5BF008A462F /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		C725B37927ABF732008A462F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C725B36827ABF5BE008A462F /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
