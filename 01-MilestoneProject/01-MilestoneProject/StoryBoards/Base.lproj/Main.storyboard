@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +27,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ac7-sy-PS8">
                                             <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -44,6 +45,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9G-o0-Xkc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="259.4202898550725" y="79.6875"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="oGF-ky-Pqb">
+            <objects>
+                <viewController storyboardIdentifier="Detail" id="0DN-xc-0Kc" customClass="DetailsViewController" customModule="_1_MilestoneProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E2Z-mk-nYM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uhK-Yl-bFn">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bAe-wl-iJK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uhK-Yl-bFn" firstAttribute="top" secondItem="E2Z-mk-nYM" secondAttribute="top" id="0wm-eq-Nhq"/>
+                            <constraint firstAttribute="bottom" secondItem="uhK-Yl-bFn" secondAttribute="bottom" id="EvB-A5-mFU"/>
+                            <constraint firstItem="uhK-Yl-bFn" firstAttribute="trailing" secondItem="bAe-wl-iJK" secondAttribute="trailing" id="cXi-qA-Kbv"/>
+                            <constraint firstItem="uhK-Yl-bFn" firstAttribute="leading" secondItem="bAe-wl-iJK" secondAttribute="leading" id="fYk-Py-387"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="uhK-Yl-bFn" id="r5z-2z-bTc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zaf-AE-x6b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1162.3188405797102" y="79.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h8a-Eb-kJ4">

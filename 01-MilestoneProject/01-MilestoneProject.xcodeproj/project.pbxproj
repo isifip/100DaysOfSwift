@@ -19,6 +19,7 @@
 		C725B40E27AC17D4008A462F /* Ireland.png in Resources */ = {isa = PBXBuildFile; fileRef = C725B40827AC17D4008A462F /* Ireland.png */; };
 		C725B40F27AC17D4008A462F /* Monaco.png in Resources */ = {isa = PBXBuildFile; fileRef = C725B40927AC17D4008A462F /* Monaco.png */; };
 		C725B41027AC17D4008A462F /* France.png in Resources */ = {isa = PBXBuildFile; fileRef = C725B40A27AC17D4008A462F /* France.png */; };
+		C725B41427AC2436008A462F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C725B41327AC2436008A462F /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C725B40827AC17D4008A462F /* Ireland.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ireland.png; sourceTree = "<group>"; };
 		C725B40927AC17D4008A462F /* Monaco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monaco.png; sourceTree = "<group>"; };
 		C725B40A27AC17D4008A462F /* France.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = France.png; sourceTree = "<group>"; };
+		C725B41327AC2436008A462F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +72,8 @@
 			children = (
 				C725B3F027AC178E008A462F /* AppDelegate.swift */,
 				C725B3F227AC178E008A462F /* SceneDelegate.swift */,
-				C725B3F427AC178E008A462F /* ViewController.swift */,
-				C725B3F627AC178E008A462F /* Main.storyboard */,
-				C725B3FB27AC1790008A462F /* LaunchScreen.storyboard */,
+				C725B41227AC2411008A462F /* Controllers */,
+				C725B41127AC23CD008A462F /* StoryBoards */,
 				C725B3F927AC1790008A462F /* Assets.xcassets */,
 				C725B40427AC17BB008A462F /* Flags */,
 				C725B3FE27AC1790008A462F /* Info.plist */,
@@ -91,6 +92,24 @@
 				C725B40927AC17D4008A462F /* Monaco.png */,
 			);
 			path = Flags;
+			sourceTree = "<group>";
+		};
+		C725B41127AC23CD008A462F /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				C725B3F627AC178E008A462F /* Main.storyboard */,
+				C725B3FB27AC1790008A462F /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		C725B41227AC2411008A462F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C725B3F427AC178E008A462F /* ViewController.swift */,
+				C725B41327AC2436008A462F /* DetailsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +192,7 @@
 				C725B3F527AC178E008A462F /* ViewController.swift in Sources */,
 				C725B3F127AC178E008A462F /* AppDelegate.swift in Sources */,
 				C725B3F327AC178E008A462F /* SceneDelegate.swift in Sources */,
+				C725B41427AC2436008A462F /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,8 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Countries"
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -37,6 +39,13 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = pictures[indexPath.row]
         cell.imageView?.image = UIImage(named: pictures[indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailsViewController {
+            vc.selectedImage = pictures[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
