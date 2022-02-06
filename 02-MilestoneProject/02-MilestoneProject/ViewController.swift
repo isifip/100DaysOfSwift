@@ -17,7 +17,7 @@ class ViewController: UITableViewController {
         title = "Shopping List"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearList))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForItem))
 
     }
@@ -31,9 +31,11 @@ class ViewController: UITableViewController {
         return cell
     }
     
-    @objc func clearList() {
-        shoppingList = []
-        tableView.reloadData()
+    @objc func shareTapped() {
+        let list = shoppingList.joined(separator: "\n")
+        let vc = UIActivityViewController(activityItems: [list], applicationActivities: [])
+        vc .popoverPresentationController?.barButtonItem = navigationItem.leftBarButtonItem
+        present(vc, animated: true)
     }
     
     @objc func promptForItem() {
@@ -55,6 +57,12 @@ class ViewController: UITableViewController {
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            shoppingList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     
 }
 
