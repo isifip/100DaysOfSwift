@@ -18,8 +18,13 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
-    var score = 0
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     var level = 1
+    var AnsweredQuestions = 0
     
     override func loadView() {
         view = UIView()
@@ -66,10 +71,14 @@ class ViewController: UIViewController {
         clear.translatesAutoresizingMaskIntoConstraints = false
         clear.setTitle("Clear", for: .normal)
         clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
+        //clear.backgroundColor = UIColor.blue
         view.addSubview(clear)
         
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsView.layer.borderWidth = 2
+        buttonsView.layer.borderColor = UIColor.gray.cgColor
+        buttonsView.layer.cornerRadius = 20
         view.addSubview(buttonsView)
         
         NSLayoutConstraint.activate([
@@ -96,13 +105,18 @@ class ViewController: UIViewController {
             currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20),
             
+            
+            submit.widthAnchor.constraint(equalToConstant: 140),
+            submit.heightAnchor.constraint(equalToConstant: 44),
             submit.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor),
             submit.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
-            submit.heightAnchor.constraint(equalToConstant: 44),
             
+            
+            clear.widthAnchor.constraint(equalToConstant: 140),
+            clear.heightAnchor.constraint(equalToConstant: 44),
             clear.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
-            clear.heightAnchor.constraint(equalToConstant: 44),
+            
             
             buttonsView.widthAnchor.constraint(equalToConstant: 750),
             buttonsView.heightAnchor.constraint(equalToConstant: 420),
@@ -113,7 +127,7 @@ class ViewController: UIViewController {
         ])
         
         let width = 150
-        let height = 80
+        let height = 105
         
         for row in 0..<4 {
             for column in 0..<5 {
@@ -157,16 +171,22 @@ class ViewController: UIViewController {
             activatedButtons.removeAll()
             var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
             splitAnswers?[solutionPosition] = answerText
-            answersLabel.text = splitAnswers?.joined(separator: "\n")
             
+            answersLabel.text = splitAnswers?.joined(separator: "\n")
             currentAnswer.text = ""
             score += 1
+            AnsweredQuestions += 1
             
-            if score % 7 == 0 {
+            if AnsweredQuestions % 7 == 0 {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
             }
+        } else {
+            score -= 1
+            let ac = UIAlertController(title: "Wrong!", message: "Please try again.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true)
         }
     }
     
