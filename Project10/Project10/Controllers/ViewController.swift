@@ -49,6 +49,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
+        
+        
         let imageName = UUID().uuidString
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
         
@@ -70,7 +72,21 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]
         
-        let ac = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .alert)
+        
+        let ac = UIAlertController(title: "Person", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
+            self?.renameTapped(person)
+        }))
+        ac.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            self?.deleteTapped(at: indexPath)
+        }))
+        
+        
+        present(ac, animated: true, completion: nil)
+    }
+    
+    func renameTapped(_ person: Person) {
+        let ac = UIAlertController(title: "Rename", message: nil, preferredStyle: .alert)
         ac.addTextField()
         
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self, weak ac] _ in
@@ -78,11 +94,15 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             person.name = newName
             self?.collectionView.reloadData()
         }))
-        
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         present(ac, animated: true, completion: nil)
     }
+    
+    func deleteTapped(at indexPath: IndexPath) {
+        print("Delete")
+    }
+    
 }
 
 
