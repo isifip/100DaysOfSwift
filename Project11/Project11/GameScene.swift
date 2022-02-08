@@ -10,6 +10,8 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var balls = ["ballRed", "ballBlue", "ballGreen", "ballPurple", "ballRed", "ballGrey", "ballYellow"]
+    
     var scoreLabel: SKLabelNode!
     var score = 0 {
         didSet {
@@ -87,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 addChild(box)
                 
             } else {
-                let ball = SKSpriteNode(imageNamed: "ballRed")
+                let ball = SKSpriteNode(imageNamed: balls.randomElement() ?? "ballRed")
                 ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
                 ball.physicsBody?.restitution = 0.4
                 ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
