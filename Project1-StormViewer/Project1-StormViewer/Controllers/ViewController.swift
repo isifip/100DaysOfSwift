@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UITableViewController {
 
     var pictures = [String]()
+    var picturesViewCount = [String: Int]()
     
 
     override func viewDidLoad() {
@@ -29,6 +30,9 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
+        
+        let userDefaults = UserDefaults.standard
+        picturesViewCount = userDefaults.object(forKey: "ViewCount") as? [String: Int] ?? [String: Int]()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,9 +48,17 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
+            
+            picturesViewCount[pictures[indexPath.row], default: 0] += 1
+            
             vc.detailImageTitle = "Picture \(indexPath.row) of \(pictures.count)"
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func saveViewCount() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(picturesViewCount, forKey: "ViewCount")
     }
 }
 
