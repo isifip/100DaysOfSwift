@@ -26,9 +26,13 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate & U
             fatalError("Unable to deque Image cell")
         }
         
-//        let image = images[indexPath.row]
-//        cell.captionName.text = image.caption
-        
+        let person = images[indexPath.row]
+        cell.captionName.text = person.caption
+        let path = getDocumentsDirectory().appendingPathComponent(person.imageName)
+        cell.imageView?.image = UIImage(contentsOfFile: path.path)
+        cell.imageView?.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
+        cell.imageView?.layer.borderWidth = 2
+        cell.imageView?.layer.cornerRadius = 3
         
         return cell
     }
@@ -46,6 +50,10 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate & U
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: imagePath)
         }
+        
+        let partImage = Image(caption: "Unknown", imageName: imageName)
+        images.append(partImage)
+        tableView.reloadData()
         
         dismiss(animated: true)
     }
