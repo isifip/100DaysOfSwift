@@ -15,6 +15,7 @@
 		C7ACBCF927B3D0C700A92131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7ACBCF727B3D0C700A92131 /* LaunchScreen.storyboard */; };
 		C7ACBD0427B3D68900A92131 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ACBD0327B3D68900A92131 /* ImageCell.swift */; };
 		C7ACBD0727B3D86700A92131 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ACBD0627B3D86700A92131 /* Image.swift */; };
+		C7ACBD0927B3E85700A92131 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ACBD0827B3E85700A92131 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C7ACBCFA27B3D0C700A92131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7ACBD0327B3D68900A92131 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		C7ACBD0627B3D86700A92131 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		C7ACBD0827B3E85700A92131 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				C7ACBCF027B3D0C600A92131 /* ViewController.swift */,
+				C7ACBD0827B3E85700A92131 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				C7ACBCF127B3D0C600A92131 /* ViewController.swift in Sources */,
 				C7ACBD0427B3D68900A92131 /* ImageCell.swift in Sources */,
 				C7ACBCED27B3D0C600A92131 /* AppDelegate.swift in Sources */,
+				C7ACBD0927B3E85700A92131 /* DetailViewController.swift in Sources */,
 				C7ACBCEF27B3D0C600A92131 /* SceneDelegate.swift in Sources */,
 				C7ACBD0727B3D86700A92131 /* Image.swift in Sources */,
 			);
