@@ -5,6 +5,7 @@
 //  Created by Irakli Sokhaneishvili on 09.02.22.
 //
 
+import CoreImage
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -14,6 +15,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     var currentImage: UIImage!
     
+    var context: CIContext!
+    var currentFilter: CIFilter!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +25,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         title = "YACIFP"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
+        
+        context = CIContext()
+        currentFilter = CIFilter(name: "CISepiaTone")
     }
-    
+    //MARK: --> Methods
     @objc func importPicture() {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
@@ -34,9 +41,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         guard let image = info[.editedImage] as? UIImage else { return }
         dismiss(animated: true)
         currentImage = image
+        
+        let beginImage = CIImage(image: currentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        applyProcessing()
     }
-
     
+    func applyProcessing() {
+        guard let image = currentFilter.outputImage else { return }
+        currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+
+        if let cgimg = context.createCGImage(image, from: image.extent) {
+            let processedImage = UIImage(cgImage: cgimg)
+            imageView.image = processedImage
+        }
+    }
+    
+    
+    //MARK: --> IBActions
     @IBAction func changeFilter(_ sender: UIButton) {
         
     }
@@ -44,7 +66,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
     }
     @IBAction func intensityChanged(_ sender: Any) {
-        
+        applyProcessing()
     }
     
 }
