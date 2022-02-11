@@ -63,7 +63,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         }
         
         guard let outputImage = currentFilter.outputImage else { return }
-        currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+        //currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
 
         if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
             let processedImage = UIImage(cgImage: cgimg)
@@ -75,11 +75,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         guard currentImage != nil else { return }
         guard let actionTitle = action.title else { return }
         currentFilter = CIFilter(name: actionTitle)
-        
+
         let beginImage = CIImage(image: currentImage)
-        currentImage.setValue(beginImage, forKey: kCIInputImageKey)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
+
         applyProcessing()
+        
+        //print(action.title!)
     }
     
     //MARK: --> IBActions
@@ -91,7 +94,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         ac.addAction(UIAlertAction(title: "CISepiaTone", style: .default, handler: setFilter))
         ac.addAction(UIAlertAction(title: "CITwirlDistortion", style: .default, handler: setFilter))
         ac.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        ac.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
         
         if let popoverController = ac.popoverPresentationController {
             popoverController.sourceView = sender
@@ -100,9 +105,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         present(ac, animated: true)
     }
+    
     @IBAction func save(_ sender: UIButton) {
         
     }
+    
     @IBAction func intensityChanged(_ sender: Any) {
         applyProcessing()
     }
