@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     let totalQuestions = 10
     
     
+    var currentAnimation = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +67,16 @@ class ViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
         
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: []){
+        //UIView.animate(withDuration: 1, delay: 0, options: []) {
+            switch self.currentAnimation {
+            case 0:
+                sender.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            default:
+                break
+            }
+        }
+        
         if sender.tag == correctAnswer {
             title = "Correct"
             score += 1
@@ -79,10 +92,28 @@ class ViewController: UIViewController {
             present(ac, animated: true)
             score = 0
             questionCounter = 0
+            UIView.animate(withDuration: 1, delay: 1, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: []){
+            //UIView.animate(withDuration: 1, delay: 0, options: []) {
+                switch self.currentAnimation {
+                case 0:
+                    sender.transform = CGAffineTransform(scaleX: 1, y: 1)
+                default:
+                    break
+                }
+            }
         } else {
             let ac = UIAlertController(title: title, message: "Thats the flag of \(countries[sender.tag])", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
             present(ac, animated: true)
+            UIView.animate(withDuration: 1, delay: 1, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: []){
+            //UIView.animate(withDuration: 1, delay: 0, options: []) {
+                switch self.currentAnimation {
+                case 0:
+                    sender.transform = CGAffineTransform(scaleX: 1, y: 1)
+                default:
+                    break
+                }
+            }
         }
     }
     
