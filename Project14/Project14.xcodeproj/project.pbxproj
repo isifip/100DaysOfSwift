@@ -14,6 +14,8 @@
 		C7DC77EE27B6756400565339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DC77EC27B6756400565339 /* Main.storyboard */; };
 		C7DC77F027B6756600565339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7DC77EF27B6756600565339 /* Assets.xcassets */; };
 		C7DC77F327B6756600565339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DC77F127B6756600565339 /* LaunchScreen.storyboard */; };
+		C7DC77FB27B675F800565339 /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7DC77F927B675F800565339 /* whackBad.caf */; };
+		C7DC77FC27B675F800565339 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7DC77FA27B675F800565339 /* whack.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C7DC77ED27B6756400565339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7DC77EF27B6756600565339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7DC77F227B6756600565339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C7DC77F927B675F800565339 /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
+		C7DC77FA27B675F800565339 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				C7DC77EC27B6756400565339 /* Main.storyboard */,
 				C7DC77EF27B6756600565339 /* Assets.xcassets */,
 				C7DC77F127B6756600565339 /* LaunchScreen.storyboard */,
+				C7DC77FA27B675F800565339 /* whack.caf */,
+				C7DC77F927B675F800565339 /* whackBad.caf */,
 			);
 			path = Project14;
 			sourceTree = "<group>";
@@ -126,10 +132,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DC77FB27B675F800565339 /* whackBad.caf in Resources */,
 				C7DC77EE27B6756400565339 /* Main.storyboard in Resources */,
 				C7DC77E527B6756400565339 /* GameScene.sks in Resources */,
 				C7DC77F027B6756600565339 /* Assets.xcassets in Resources */,
 				C7DC77F327B6756600565339 /* LaunchScreen.storyboard in Resources */,
+				C7DC77FC27B675F800565339 /* whack.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
