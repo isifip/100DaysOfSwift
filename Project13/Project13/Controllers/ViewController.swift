@@ -85,6 +85,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         //print(action.title!)
     }
     
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your library", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: --> IBActions
     @IBAction func changeFilter(_ sender: UIButton) {
         let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
@@ -106,9 +117,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         present(ac, animated: true)
     }
     
-    @IBAction func save(_ sender: UIButton) {
-        
+    @IBAction func save(_ sender: Any) {
+        guard let image = imageView.image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
+    
     
     @IBAction func intensityChanged(_ sender: Any) {
         applyProcessing()
