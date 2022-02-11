@@ -46,24 +46,24 @@
                                     <action selector="intensityChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VGz-6v-sva"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmd-Sw-RLi">
-                                <rect key="frame" x="16" y="726" width="120" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmd-Sw-RLi">
+                                <rect key="frame" x="16" y="726" width="200" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="LFx-gL-Nhl"/>
+                                    <constraint firstAttribute="width" constant="200" id="LFx-gL-Nhl"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Change filter" cornerStyle="capsule"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Change filter"/>
                                 <connections>
                                     <action selector="changeFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OOZ-hm-jM9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfa-iu-k0I">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfa-iu-k0I">
                                 <rect key="frame" x="248" y="726" width="120" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="J2e-40-sfW"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Save" cornerStyle="capsule"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3jE-0F-6bQ"/>
                                 </connections>
@@ -90,6 +90,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZNh-0v-oDM"/>
                     <connections>
+                        <outlet property="filterButton" destination="pmd-Sw-RLi" id="3nI-CD-DcZ"/>
                         <outlet property="imageView" destination="t8J-52-pm1" id="MvE-Ne-KBP"/>
                         <outlet property="intensity" destination="K27-VT-ce2" id="QaM-pd-wKv"/>
                     </connections>
