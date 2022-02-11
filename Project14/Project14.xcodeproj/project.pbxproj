@@ -65,13 +65,21 @@
 				C7DC77E427B6756400565339 /* GameScene.sks */,
 				C7DC77E827B6756400565339 /* GameScene.swift */,
 				C7DC77EA27B6756400565339 /* GameViewController.swift */,
-				C7DC77EC27B6756400565339 /* Main.storyboard */,
+				C7DC77FF27B67A4400565339 /* StoryBoards */,
 				C7DC77EF27B6756600565339 /* Assets.xcassets */,
-				C7DC77F127B6756600565339 /* LaunchScreen.storyboard */,
 				C7DC77FA27B675F800565339 /* whack.caf */,
 				C7DC77F927B675F800565339 /* whackBad.caf */,
 			);
 			path = Project14;
+			sourceTree = "<group>";
+		};
+		C7DC77FF27B67A4400565339 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				C7DC77EC27B6756400565339 /* Main.storyboard */,
+				C7DC77F127B6756600565339 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
