@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
+    var currentAnimation = 0
+    
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -159,9 +161,20 @@ class ViewController: UIViewController {
     
     @objc func letterTapped(_ sender: UIButton) {
         guard let buttonTitle = sender.titleLabel?.text else { return }
+        
+        // Project 15, challenge 1
+        UIView.animate(withDuration: 0.5, delay: 0, options: []) {
+            switch self.currentAnimation {
+            case 0:
+                sender.alpha = 0.0
+            default:
+                break
+            }
+        }
         currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
         activatedButtons.append(sender)
-        sender.isHidden = true
+        
+        //sender.isHidden = true
     }
     
     @objc func submitTapped(_ sender: UIButton) {
