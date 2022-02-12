@@ -85,13 +85,22 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let placeInfo = capital.info
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
         
+       
+        // challenge 3
+        ac.addAction(UIAlertAction(title: "Wikipedia", style: .default, handler: { [weak self] _ in
+            self?.openWikipedia(url: capital.wikipediaUrl)
+        }))
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
     
-//    func openWikipedia(url: String) {
-//        
-//    }
+    func openWikipedia(url: String) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
+            vc.website = url
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
     
 }
 
