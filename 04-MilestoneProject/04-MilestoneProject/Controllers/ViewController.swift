@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var countries = [Country]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,7 +42,14 @@ class ViewController: UITableViewController {
         //cell.imageView?.image = UIImage(named: country.flag)
         return cell
     }
-
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vc.country = countries[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
 }
 
