@@ -13,6 +13,7 @@
 		C79E4B4727B7A0A800AF44BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79E4B4527B7A0A800AF44BA /* Main.storyboard */; };
 		C79E4B4927B7A0A900AF44BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79E4B4827B7A0A900AF44BA /* Assets.xcassets */; };
 		C79E4B4C27B7A0A900AF44BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79E4B4A27B7A0A900AF44BA /* LaunchScreen.storyboard */; };
+		C79E4B6127B7A61200AF44BA /* Countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C79E4B6027B7A61200AF44BA /* Countries.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C79E4B4827B7A0A900AF44BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C79E4B4B27B7A0A900AF44BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C79E4B4D27B7A0A900AF44BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C79E4B6027B7A61200AF44BA /* Countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Countries.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		C79E4B3E27B7A0A800AF44BA /* 04-MilestoneProject */ = {
 			isa = PBXGroup;
 			children = (
+				C79E4B5E27B7A5F900AF44BA /* Data */,
 				C79E4B3F27B7A0A800AF44BA /* AppDelegate.swift */,
 				C79E4B4127B7A0A800AF44BA /* SceneDelegate.swift */,
 				C79E4B5427B7A0C100AF44BA /* Controllers */,
@@ -81,6 +84,14 @@
 				C79E4B4327B7A0A800AF44BA /* ViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C79E4B5E27B7A5F900AF44BA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C79E4B6027B7A61200AF44BA /* Countries.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +154,7 @@
 			files = (
 				C79E4B4C27B7A0A900AF44BA /* LaunchScreen.storyboard in Resources */,
 				C79E4B4927B7A0A900AF44BA /* Assets.xcassets in Resources */,
+				C79E4B6127B7A61200AF44BA /* Countries.json in Resources */,
 				C79E4B4727B7A0A800AF44BA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
