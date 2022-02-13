@@ -14,6 +14,8 @@
 		C762F2C027B8E71300BBFCC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C762F2BE27B8E71300BBFCC0 /* Main.storyboard */; };
 		C762F2C227B8E71400BBFCC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C762F2C127B8E71400BBFCC0 /* Assets.xcassets */; };
 		C762F2C527B8E71400BBFCC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C762F2C327B8E71400BBFCC0 /* LaunchScreen.storyboard */; };
+		C762F2CD27B8E7C400BBFCC0 /* starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = C762F2CB27B8E7C400BBFCC0 /* starfield.sks */; };
+		C762F2CE27B8E7C400BBFCC0 /* explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = C762F2CC27B8E7C400BBFCC0 /* explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C762F2BF27B8E71300BBFCC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C762F2C127B8E71400BBFCC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C762F2C427B8E71400BBFCC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C762F2CB27B8E7C400BBFCC0 /* starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = starfield.sks; sourceTree = "<group>"; };
+		C762F2CC27B8E7C400BBFCC0 /* explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +65,21 @@
 				C762F2B627B8E71300BBFCC0 /* GameScene.sks */,
 				C762F2BA27B8E71300BBFCC0 /* GameScene.swift */,
 				C762F2BC27B8E71300BBFCC0 /* GameViewController.swift */,
-				C762F2BE27B8E71300BBFCC0 /* Main.storyboard */,
+				C762F2CF27B8E7CA00BBFCC0 /* StoryBoards */,
 				C762F2C127B8E71400BBFCC0 /* Assets.xcassets */,
-				C762F2C327B8E71400BBFCC0 /* LaunchScreen.storyboard */,
+				C762F2CC27B8E7C400BBFCC0 /* explosion.sks */,
+				C762F2CB27B8E7C400BBFCC0 /* starfield.sks */,
 			);
 			path = Project17;
+			sourceTree = "<group>";
+		};
+		C762F2CF27B8E7CA00BBFCC0 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				C762F2BE27B8E71300BBFCC0 /* Main.storyboard */,
+				C762F2C327B8E71400BBFCC0 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,6 +143,8 @@
 				C762F2C027B8E71300BBFCC0 /* Main.storyboard in Resources */,
 				C762F2B727B8E71300BBFCC0 /* GameScene.sks in Resources */,
 				C762F2C227B8E71400BBFCC0 /* Assets.xcassets in Resources */,
+				C762F2CE27B8E7C400BBFCC0 /* explosion.sks in Resources */,
+				C762F2CD27B8E7C400BBFCC0 /* starfield.sks in Resources */,
 				C762F2C527B8E71400BBFCC0 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
