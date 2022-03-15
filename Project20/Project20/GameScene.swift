@@ -53,9 +53,49 @@ class GameScene: SKScene {
         
         let move = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: 200)
         node.run(move)
+        
+        if let emitter = SKEmitterNode(fileNamed: "fuse") {
+            emitter.position = CGPoint(x: 0, y: -22)
+            node.addChild(emitter)
+        }
+        
+        fireworks.append(node)
+        addChild(node)
     }
     
     @objc func launchFireworks() {
-        
+        let movementAmount: CGFloat = 1800
+        switch Int.random(in: 0...3) {
+        case 0:
+            // fire five, straight up
+            createFirework(xMovement: 0, x: 512, y: bottomEdge)
+            createFirework(xMovement: 0, x: 512 - 200, y: bottomEdge)
+            createFirework(xMovement: 0, x: 512 - 100, y: bottomEdge)
+            createFirework(xMovement: 0, x: 512 + 100, y: bottomEdge)
+            createFirework(xMovement: 0, x: 512 + 200, y: bottomEdge)
+        case 1:
+            // fire five, in a fan
+            createFirework(xMovement: 0, x: 512, y: bottomEdge)
+            createFirework(xMovement: -200, x: 512 - 200, y: bottomEdge)
+            createFirework(xMovement: -100, x: 512 - 100, y: bottomEdge)
+            createFirework(xMovement: +100, x: 512 + 100, y: bottomEdge)
+            createFirework(xMovement: +200, x: 512 + 200, y: bottomEdge)
+        case 2:
+            // fire five, from the left to the right
+            createFirework(xMovement: movementAmount, x: leftEdge, y: bottomEdge + 400)
+            createFirework(xMovement: movementAmount, x: leftEdge, y: bottomEdge + 300)
+            createFirework(xMovement: movementAmount, x: leftEdge, y: bottomEdge + 200)
+            createFirework(xMovement: movementAmount, x: leftEdge, y: bottomEdge + 100)
+            createFirework(xMovement: movementAmount, x: leftEdge, y: bottomEdge)
+        case 3:
+            // fire five, from the right to the left
+            createFirework(xMovement: -movementAmount, x: rightEdge, y: bottomEdge + 400)
+            createFirework(xMovement: -movementAmount, x: rightEdge, y: bottomEdge + 300)
+            createFirework(xMovement: -movementAmount, x: rightEdge, y: bottomEdge + 200)
+            createFirework(xMovement: -movementAmount, x: rightEdge, y: bottomEdge + 100)
+            createFirework(xMovement: -movementAmount, x: rightEdge, y: bottomEdge)
+        default:
+            break
+        }
     }
 }
