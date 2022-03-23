@@ -14,6 +14,17 @@
 		C7F415B827EB5CB10043F1D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F415B627EB5CB10043F1D8 /* Main.storyboard */; };
 		C7F415BA27EB5CB30043F1D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F415B927EB5CB30043F1D8 /* Assets.xcassets */; };
 		C7F415BD27EB5CB30043F1D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F415BB27EB5CB30043F1D8 /* LaunchScreen.storyboard */; };
+		C7F415CF27EB5D7F0043F1D8 /* swoosh3.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415C427EB5D7E0043F1D8 /* swoosh3.caf */; };
+		C7F415D027EB5D7F0043F1D8 /* sliceBombFuse.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415C527EB5D7E0043F1D8 /* sliceBombFuse.caf */; };
+		C7F415D127EB5D7F0043F1D8 /* sliceHitEnemy.sks in Resources */ = {isa = PBXBuildFile; fileRef = C7F415C627EB5D7E0043F1D8 /* sliceHitEnemy.sks */; };
+		C7F415D227EB5D7F0043F1D8 /* explosion.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415C727EB5D7E0043F1D8 /* explosion.caf */; };
+		C7F415D327EB5D7F0043F1D8 /* swoosh1.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415C827EB5D7E0043F1D8 /* swoosh1.caf */; };
+		C7F415D427EB5D7F0043F1D8 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415C927EB5D7F0043F1D8 /* whack.caf */; };
+		C7F415D527EB5D7F0043F1D8 /* launch.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415CA27EB5D7F0043F1D8 /* launch.caf */; };
+		C7F415D627EB5D7F0043F1D8 /* sliceHitBomb.sks in Resources */ = {isa = PBXBuildFile; fileRef = C7F415CB27EB5D7F0043F1D8 /* sliceHitBomb.sks */; };
+		C7F415D727EB5D7F0043F1D8 /* swoosh2.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415CC27EB5D7F0043F1D8 /* swoosh2.caf */; };
+		C7F415D827EB5D7F0043F1D8 /* wrong.caf in Resources */ = {isa = PBXBuildFile; fileRef = C7F415CD27EB5D7F0043F1D8 /* wrong.caf */; };
+		C7F415D927EB5D7F0043F1D8 /* sliceFuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = C7F415CE27EB5D7F0043F1D8 /* sliceFuse.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +36,17 @@
 		C7F415B727EB5CB10043F1D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7F415B927EB5CB30043F1D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7F415BC27EB5CB30043F1D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C7F415C427EB5D7E0043F1D8 /* swoosh3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh3.caf; sourceTree = "<group>"; };
+		C7F415C527EB5D7E0043F1D8 /* sliceBombFuse.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sliceBombFuse.caf; sourceTree = "<group>"; };
+		C7F415C627EB5D7E0043F1D8 /* sliceHitEnemy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sliceHitEnemy.sks; sourceTree = "<group>"; };
+		C7F415C727EB5D7E0043F1D8 /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
+		C7F415C827EB5D7E0043F1D8 /* swoosh1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh1.caf; sourceTree = "<group>"; };
+		C7F415C927EB5D7F0043F1D8 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
+		C7F415CA27EB5D7F0043F1D8 /* launch.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = launch.caf; sourceTree = "<group>"; };
+		C7F415CB27EB5D7F0043F1D8 /* sliceHitBomb.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sliceHitBomb.sks; sourceTree = "<group>"; };
+		C7F415CC27EB5D7F0043F1D8 /* swoosh2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh2.caf; sourceTree = "<group>"; };
+		C7F415CD27EB5D7F0043F1D8 /* wrong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wrong.caf; sourceTree = "<group>"; };
+		C7F415CE27EB5D7F0043F1D8 /* sliceFuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sliceFuse.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +85,17 @@
 				C7F415B427EB5CB10043F1D8 /* GameViewController.swift */,
 				C7F415C327EB5CE60043F1D8 /* StoryBoards */,
 				C7F415B927EB5CB30043F1D8 /* Assets.xcassets */,
+				C7F415C727EB5D7E0043F1D8 /* explosion.caf */,
+				C7F415CA27EB5D7F0043F1D8 /* launch.caf */,
+				C7F415C527EB5D7E0043F1D8 /* sliceBombFuse.caf */,
+				C7F415CE27EB5D7F0043F1D8 /* sliceFuse.sks */,
+				C7F415CB27EB5D7F0043F1D8 /* sliceHitBomb.sks */,
+				C7F415C627EB5D7E0043F1D8 /* sliceHitEnemy.sks */,
+				C7F415C827EB5D7E0043F1D8 /* swoosh1.caf */,
+				C7F415CC27EB5D7F0043F1D8 /* swoosh2.caf */,
+				C7F415C427EB5D7E0043F1D8 /* swoosh3.caf */,
+				C7F415C927EB5D7F0043F1D8 /* whack.caf */,
+				C7F415CD27EB5D7F0043F1D8 /* wrong.caf */,
 			);
 			path = Project23;
 			sourceTree = "<group>";
@@ -134,10 +167,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F415D827EB5D7F0043F1D8 /* wrong.caf in Resources */,
+				C7F415D627EB5D7F0043F1D8 /* sliceHitBomb.sks in Resources */,
+				C7F415D927EB5D7F0043F1D8 /* sliceFuse.sks in Resources */,
+				C7F415D027EB5D7F0043F1D8 /* sliceBombFuse.caf in Resources */,
+				C7F415D527EB5D7F0043F1D8 /* launch.caf in Resources */,
+				C7F415D427EB5D7F0043F1D8 /* whack.caf in Resources */,
+				C7F415D127EB5D7F0043F1D8 /* sliceHitEnemy.sks in Resources */,
 				C7F415B827EB5CB10043F1D8 /* Main.storyboard in Resources */,
 				C7F415AF27EB5CB10043F1D8 /* GameScene.sks in Resources */,
 				C7F415BA27EB5CB30043F1D8 /* Assets.xcassets in Resources */,
 				C7F415BD27EB5CB30043F1D8 /* LaunchScreen.storyboard in Resources */,
+				C7F415D227EB5D7F0043F1D8 /* explosion.caf in Resources */,
+				C7F415CF27EB5D7F0043F1D8 /* swoosh3.caf in Resources */,
+				C7F415D327EB5D7F0043F1D8 /* swoosh1.caf in Resources */,
+				C7F415D727EB5D7F0043F1D8 /* swoosh2.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
