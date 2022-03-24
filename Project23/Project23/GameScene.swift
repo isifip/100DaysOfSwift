@@ -148,8 +148,39 @@ class GameScene: SKScene {
                 
             } else if node.name == "bomb" {
                 // Destroy the bomb
+                guard let bombContainer = node.parent as? SKSpriteNode else {
+                    continue
+                }
+                
+                if let emitter = SKEmitterNode(fileNamed: "sliceHitBomb") {
+                    emitter.position = bombContainer.position
+                    addChild(emitter)
+                }
+                
+                node.name = ""
+                bombContainer.physicsBody?.isDynamic = false
+                
+                let scaleOut = SKAction.scale(by: 0.001, duration: 0.2)
+                let fadeOut = SKAction.fadeOut(withDuration: 0.2)
+                let group = SKAction.group([scaleOut, fadeOut])
+                let seq = SKAction.sequence([group, .removeFromParent()])
+                
+                bombContainer.run(seq)
+                
+                if let index = activeEnemies.firstIndex(of: bombContainer) {
+                    activeEnemies.remove(at: index)
+                }
+                
+                run(SKAction.playSoundFileNamed("explosion.caf", waitForCompletion: false))
+                
+                endGame()
+                
             }
         }
+    }
+    
+    func endGame() {
+        
     }
     
     func playSwooshSound() {
@@ -279,14 +310,29 @@ class GameScene: SKScene {
         activeEnemies.append(enemy)
     }
     
+    func subtractLife() {
+        
+    }
     
     override func update(_ currentTime: TimeInterval) {
         
         if activeEnemies.count > 0 {
             for (index, node) in activeEnemies.enumerated().reversed() {
                 if node.position.y < -140 {
-                    node.removeFromParent()
-                    activeEnemies.remove(at: index)
+//                    node.removeFromParent()
+//                    activeEnemies.remove(at: index)
+                    node.removeAllActions()
+                    if node.name == "enemy" {
+                        node.name = ""
+                        subtractLife()
+                        
+                        node.removeFromParent()
+                        activeEnemies.remove(at: index)
+                    } else if node.name == "bombContainer" {
+                        node.name = ""
+                        node.removeFromParent()
+                        activeEnemies.remove(at: index)
+                    }
                 }
             }
         } else {
