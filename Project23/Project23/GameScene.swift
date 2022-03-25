@@ -173,13 +173,13 @@ class GameScene: SKScene {
                 
                 run(SKAction.playSoundFileNamed("explosion.caf", waitForCompletion: false))
                 
-                endGame()
+                endGame(triggeredByBomb: true)
                 
             }
         }
     }
     
-    func endGame() {
+    func endGame(triggeredByBomb: Bool) {
         
     }
     
@@ -311,7 +311,25 @@ class GameScene: SKScene {
     }
     
     func subtractLife() {
+        lives -= 1
         
+        run(SKAction.playSoundFileNamed("wrong.caf", waitForCompletion: false))
+        
+        var life: SKSpriteNode
+        
+        if lives == 2 {
+            life = livesImages[0]
+        } else if lives == 1 {
+            life = livesImages[1]
+        } else {
+            life = livesImages[2]
+            endGame(triggeredByBomb: false)
+        }
+        
+        life.texture = SKTexture(imageNamed: "sliceLifeGone")
+        life.xScale = 1.3
+        life.yScale = 1.3
+        life.run(SKAction.scale(to: 1, duration: 0.1))
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -319,8 +337,6 @@ class GameScene: SKScene {
         if activeEnemies.count > 0 {
             for (index, node) in activeEnemies.enumerated().reversed() {
                 if node.position.y < -140 {
-//                    node.removeFromParent()
-//                    activeEnemies.remove(at: index)
                     node.removeAllActions()
                     if node.name == "enemy" {
                         node.name = ""
