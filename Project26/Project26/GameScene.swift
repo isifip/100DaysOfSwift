@@ -18,7 +18,7 @@ enum CollisinTypes: UInt32 {
 class GameScene: SKScene {
   
     override func didMove(to view: SKView) {
-  
+        loadLevel()
     }
     
     func loadLevel() {
@@ -44,6 +44,9 @@ class GameScene: SKScene {
                     node .physicsBody = SKPhysicsBody(rectangleOf: node.size)
                     node.physicsBody?.categoryBitMask = CollisinTypes.wall.rawValue
                     node.physicsBody?.isDynamic = false
+                    
+                    addChild(node)
+                    
                 } else if letter == "v" {
                     // load vortex
                     let node = SKSpriteNode(imageNamed: "vortex")
@@ -62,8 +65,36 @@ class GameScene: SKScene {
                     
                 } else if letter == "s" {
                     // load star
+                    let node = SKSpriteNode(imageNamed: "star")
+                    
+                    node.name = "star"
+                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+                    node.physicsBody?.isDynamic = false
+                    node.physicsBody?.categoryBitMask = CollisinTypes.star.rawValue
+                    node.physicsBody?.contactTestBitMask = CollisinTypes.player.rawValue
+                    node.physicsBody?.collisionBitMask = 0
+                    
+                    node.position = position
+                    
+                    addChild(node)
+                    
                 } else if letter == "f" {
                     // load finish point
+                    
+                    let node = SKSpriteNode(imageNamed: "finish")
+                    
+                    node.name = "finish"
+                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+                    node.physicsBody?.isDynamic = false
+                    node.physicsBody?.categoryBitMask = CollisinTypes.finish.rawValue
+                    node.physicsBody?.contactTestBitMask = CollisinTypes.player.rawValue
+                    node.physicsBody?.collisionBitMask = 0
+                    
+                    node.position = position
+                    
+                    addChild(node)
+                } else if letter == " " {
+                    // Empty space - do nothing
                 } else {
                     fatalError("Unknown level letter: \(letter)")
                 }
