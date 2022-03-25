@@ -14,6 +14,7 @@
 		C7FC8F2327EDECA7005C3411 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FC8F2127EDECA7005C3411 /* Main.storyboard */; };
 		C7FC8F2527EDECA8005C3411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7FC8F2427EDECA8005C3411 /* Assets.xcassets */; };
 		C7FC8F2827EDECA8005C3411 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FC8F2627EDECA8005C3411 /* LaunchScreen.storyboard */; };
+		C7FC8F3027EDED2F005C3411 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7FC8F2F27EDED2F005C3411 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		C7FC8F2227EDECA7005C3411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7FC8F2427EDECA8005C3411 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7FC8F2727EDECA8005C3411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C7FC8F2F27EDED2F005C3411 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				C7FC8F1927EDECA7005C3411 /* GameScene.sks */,
 				C7FC8F1D27EDECA7005C3411 /* GameScene.swift */,
 				C7FC8F1F27EDECA7005C3411 /* GameViewController.swift */,
+				C7FC8F2F27EDED2F005C3411 /* level1.txt */,
 				C7FC8F2E27EDECE0005C3411 /* StoryBoards */,
 				C7FC8F2427EDECA8005C3411 /* Assets.xcassets */,
 			);
@@ -134,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7FC8F3027EDED2F005C3411 /* level1.txt in Resources */,
 				C7FC8F2327EDECA7005C3411 /* Main.storyboard in Resources */,
 				C7FC8F1A27EDECA7005C3411 /* GameScene.sks in Resources */,
 				C7FC8F2527EDECA8005C3411 /* Assets.xcassets in Resources */,
