@@ -7,6 +7,13 @@
 
 import SpriteKit
 
+enum CollisinTypes: UInt32 {
+    case player = 1
+    case wall = 2
+    case star = 4
+    case vortex = 8
+    case finish = 16
+}
 
 class GameScene: SKScene {
   
@@ -31,8 +38,28 @@ class GameScene: SKScene {
                 
                 if letter == "x" {
                     // load wall
+                    let node = SKSpriteNode(imageNamed: "block")
+                    node.position = position
+                    
+                    node .physicsBody = SKPhysicsBody(rectangleOf: node.size)
+                    node.physicsBody?.categoryBitMask = CollisinTypes.wall.rawValue
+                    node.physicsBody?.isDynamic = false
                 } else if letter == "v" {
                     // load vortex
+                    let node = SKSpriteNode(imageNamed: "vortex")
+                    node.name = "vortex"
+                    node.position = position
+                    
+                    node.run(SKAction.repeatForever(SKAction.rotate(byAngle: .pi, duration: 1)))
+                    
+                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+                    node.physicsBody?.isDynamic = false
+                    node.physicsBody?.categoryBitMask = CollisinTypes.vortex.rawValue
+                    node.physicsBody?.contactTestBitMask = CollisinTypes.player.rawValue
+                    node.physicsBody?.collisionBitMask = 0
+                    
+                    addChild(node)
+                    
                 } else if letter == "s" {
                     // load star
                 } else if letter == "f" {
