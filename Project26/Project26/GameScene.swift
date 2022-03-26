@@ -5,6 +5,7 @@
 //  Created by Irakli Sokhaneishvili on 25.03.22.
 //
 
+import CoreMotion
 import SpriteKit
 
 enum CollisinTypes: UInt32 {
@@ -20,6 +21,8 @@ class GameScene: SKScene {
     var player: SKSpriteNode!
     var lastTouchPosition: CGPoint?
   
+    var motionManager: CMMotionManager?
+    
     override func didMove(to view: SKView) {
         
         let background = SKSpriteNode(imageNamed: "background")
@@ -32,6 +35,9 @@ class GameScene: SKScene {
         createPlayer()
         
         physicsWorld.gravity = .zero
+        
+        motionManager = CMMotionManager()
+        motionManager?.startAccelerometerUpdates()
     }
     
     func loadLevel() {
@@ -141,9 +147,15 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        #if targetEnvironment(simulator)
         if let lastTouchPosition = lastTouchPosition {
             let diff = CGPoint(x: lastTouchPosition.x - player.position.x, y: lastTouchPosition.y - player.position.y)
             physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: diff.y / 100)
         }
+        #else
+        if let accelerometerData = motionManager?.accelerometerData {
+            physicsWorld.gravity = CGVector(dx: accelerometerData.acceleration.y * -50, dy: accelerometerData.acceleration.x * 50)
+        }
+        #endif
     }
 }
