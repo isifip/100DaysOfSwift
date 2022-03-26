@@ -289,6 +289,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isGameOver = false
     }
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+         guard let touch = touches.first else { return }
+         let location = touch.location(in: self)
+         lastTouchPosition = location
+     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         lastTouchPosition = nil
     }
@@ -305,4 +311,109 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         #endif
     }
+    
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+    
+        if nodeA == player {
+            playerCollided(with: nodeB)
+        }
+        else if nodeB == player {
+            playerCollided(with: nodeA)
+        }
+    }
+    
+    func playerCollided(with node: SKNode) {
+        if node.name == "vortex" {
+            // stop the ball
+            player.physicsBody?.isDynamic = false
+            isGameOver = true
+            score -= 1
+            
+            let move = SKAction.move(to: node.position, duration: 0.25)
+            let scale = SKAction.scale(to: 0.0001, duration: 0.25)
+            let remove = SKAction.removeFromParent()
+            let sequence = SKAction.sequence([move, scale, remove])
+            
+            // reset the player
+            player.run(sequence) { [weak self] in
+                self?.createPlayer()
+                self?.isGameOver = false
+            }
+        }
+        // challenge 3
+        if node.name == "portal" && portalActive {
+            // find exit portal node
+            for currentNode in children {
+                if currentNode.name == "portal" && currentNode != node {
+                    enterPortalAction(portalIn: node, portalOut: currentNode)
+                    break
+                }
+            }
+        }
+        else if node.name == "star" {
+            node.removeFromParent()
+            score += 1
+        }
+        else if node.name == "finish" {
+            // challenge 2
+            player.physicsBody?.isDynamic = false
+            addChild(finishNode)
+            addChild(nextLevelLabel)
+            addChild(restartLevelLabel)
+            addChild(restartGameLabel)
+        }
+        
+        // challenge 3
+        // if the player went to a different collision directly after a portal,
+        // didEnd won't be called
+        if !portalActive && node.name != "portal" {
+            portalActive = true
+        }
+    }
+    
+    func playerEndedCollision(with node: SKNode) {
+            guard node.name == "portal" else { return }
+            
+            portalActive = true
+    }
+    
+    func enterPortalAction(portalIn: SKNode, portalOut: SKNode) {
+        
+        // stop the ball
+        player.physicsBody?.isDynamic = false
+        
+        let rotate = SKAction.rotate(byAngle: -.pi, duration: 0.1)
+        let rotateSequence = SKAction.sequence([rotate, rotate, rotate, rotate, rotate])
+        player.run(rotateSequence)
+        
+        let move = SKAction.move(to: portalIn.position, duration: 0.25)
+        let fade = SKAction.fadeOut(withDuration: 0.25)
+        let remove = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([move, fade, remove])
+        
+        // player to new node
+        player.run(sequence) { [weak self, weak portalOut] in
+            if let portalOut = portalOut {
+                self?.exitPortalAction(portalOut: portalOut)
+            }
+        }
+    }
+    
+    func exitPortalAction(portalOut: SKNode) {
+           createPlayer()
+           player.alpha = 0.0
+           player.position = portalOut.position
+
+           let rotate = SKAction.rotate(byAngle: -.pi, duration: 0.05)
+           let rotateSequence = SKAction.sequence([rotate, rotate, rotate, rotate, rotate])
+           player.run(rotateSequence)
+
+           player.run(SKAction.fadeIn(withDuration: 0.25))
+           
+           // deactivate portal until player quits it
+           portalActive = false
+       }
 }
