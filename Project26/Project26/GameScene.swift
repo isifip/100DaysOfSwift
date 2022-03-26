@@ -72,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         currentLevelLabel.name = "currentLevel"
         addChild(currentLevelLabel)
         
-        
+        prepareFinishLabels()
         
         loadLevel()
         createPlayer()
@@ -82,6 +82,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         motionManager = CMMotionManager()
         motionManager?.startAccelerometerUpdates()
+    }
+    
+    
+    func prepareFinishLabels() {
+        finishNode = SKSpriteNode(imageNamed: "finish")
+        finishNode.position = CGPoint(x: 512, y: 544)
+        finishNode.zPosition = 2
+
+        nextLevelLabel = SKLabelNode(fontNamed: "Chalkduster")
+        nextLevelLabel.text = "Next Level"
+        nextLevelLabel.fontSize = 48
+        nextLevelLabel.name = "nextLevel"
+        nextLevelLabel.horizontalAlignmentMode = .center
+        nextLevelLabel.position = CGPoint(x: 512, y: 454)
+        nextLevelLabel.zPosition = 2
+        
+        restartLevelLabel = SKLabelNode(fontNamed: "Chalkduster")
+        restartLevelLabel.text = "Restart Level"
+        restartLevelLabel.fontSize = 48
+        restartLevelLabel.name = "restartLevel"
+        restartLevelLabel.horizontalAlignmentMode = .center
+        restartLevelLabel.position = CGPoint(x: 512, y: 384)
+        restartLevelLabel.zPosition = 2
+        
+        restartGameLabel = SKLabelNode(fontNamed: "Chalkduster")
+        restartGameLabel.text = "Restart Game"
+        restartGameLabel.fontSize = 48
+        restartGameLabel.name = "restartGame"
+        restartGameLabel.horizontalAlignmentMode = .center
+        restartGameLabel.position = CGPoint(x: 512, y: 314)
+        restartGameLabel.zPosition = 2
     }
     
     func loadLevel() {
@@ -103,6 +134,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 addLevelElement(withId: letter, to: position)
             }
         }
+    }
+    
+    // challenge 2
+    func destroyLevel() {
+        for node in children {
+            if ["wall", "vortex", "star", "finish", "portal"].contains(node.name) {
+                node.removeFromParent()
+            }
+        }
+        player.removeFromParent()
     }
     
     //MARK: --> Challenge 1
@@ -208,6 +249,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         lastTouchPosition = location
+        
+        // challenge 2
+        for node in nodes(at: location) {
+            if node.name == "nextLevel" {
+                currentLevel += 1
+                if currentLevel > maxLevel {
+                    currentLevel = 1
+                }
+                restart()
+            }
+            else if node.name == "restartLevel" {
+                restart()
+            }
+            else if node.name == "restartGame" {
+                score = 0
+                currentLevel = 1
+                restart()
+            }
+            else if node.name == "currentLevel" {
+                player.removeAllActions()
+                player.physicsBody?.isDynamic = false
+                addChild(nextLevelLabel)
+                addChild(restartLevelLabel)
+                addChild(restartGameLabel)
+            }
+        }
+    }
+    
+    // challenge 2
+    func restart() {
+        finishNode.removeFromParent()
+        nextLevelLabel.removeFromParent()
+        restartLevelLabel.removeFromParent()
+        restartGameLabel.removeFromParent()
+        destroyLevel()
+        loadLevel()
+        createPlayer()
+        isGameOver = false
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
