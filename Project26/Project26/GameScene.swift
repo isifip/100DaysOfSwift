@@ -14,14 +14,40 @@ enum CollisionTypes: UInt32 {
     case star = 4
     case vortex = 8
     case finish = 16
+    case portal = 32
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: SKSpriteNode!
     var lastTouchPosition: CGPoint?
     
     var motionManager: CMMotionManager?
+    
+    var isGameOver = false
+    
+    var scoreLabel: SKLabelNode!
+    var portalActive = true
+    
+    var restartGameLabel: SKLabelNode!
+    var restartLevelLabel: SKLabelNode!
+    var nextLevelLabel: SKLabelNode!
+    var finishNode: SKSpriteNode!
+    
+    var currentLevelLabel: SKLabelNode!
+    
+    var currentLevel = 1 {
+        didSet {
+            currentLevelLabel.text = "Level: \(currentLevel)"
+        }
+    }
+    var maxLevel = 7
+    
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     
     override func didMove(to view: SKView) {
         
@@ -31,10 +57,28 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Score: 0"
+        scoreLabel.horizontalAlignmentMode = .left
+        scoreLabel.position = CGPoint(x: 16, y: 16)
+        scoreLabel.zPosition = 2
+        addChild(scoreLabel)
+        
+        currentLevelLabel = SKLabelNode(fontNamed: "Chalkduster")
+        currentLevelLabel.text = "Level: \(currentLevel)"
+        currentLevelLabel.horizontalAlignmentMode = .left
+        currentLevelLabel.position = CGPoint(x: 16, y: 730)
+        currentLevelLabel.zPosition = 2
+        currentLevelLabel.name = "currentLevel"
+        addChild(currentLevelLabel)
+        
+        
+        
         loadLevel()
         createPlayer()
         
         physicsWorld.gravity = .zero
+        physicsWorld.contactDelegate = self
         
         motionManager = CMMotionManager()
         motionManager?.startAccelerometerUpdates()
