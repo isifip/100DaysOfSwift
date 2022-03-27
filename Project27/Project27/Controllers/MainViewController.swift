@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
             drawRotatedSquares()
         case 4:
             drawLines()
+        case 5:
+            drawImagesAndText()
         default:
             break
         }
@@ -144,6 +146,30 @@ class MainViewController: UIViewController {
             
             context.cgContext.setStrokeColor(UIColor.blue.cgColor)
             context.cgContext.strokePath()
+        }
+        
+        imageView.image = image
+    }
+    
+    func drawImagesAndText() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let image = renderer.image { context in
+            // Drawing code
+            let parahraphStyle = NSMutableParagraphStyle()
+            parahraphStyle.alignment = .center
+            
+            let attrs: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 36),
+                .paragraphStyle: parahraphStyle
+            ]
+            let string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            let attributedString = NSAttributedString(string: string, attributes: attrs)
+            
+            attributedString.draw(with: CGRect(x: 32, y: 32, width: 448, height: 448), options: .usesLineFragmentOrigin, context: nil)
+            
+            let mouse = UIImage(named: "mouse")
+            mouse?.draw(at: CGPoint(x: 300, y: 150))
         }
         
         imageView.image = image
