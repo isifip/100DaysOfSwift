@@ -8,20 +8,21 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet var imageView: UIImageView!
     var currentDrawType = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         drawRectangle()
     }
-
+    
     @IBAction func redrawTapped(_ sender: Any) {
         currentDrawType += 1
         
-        if currentDrawType > 5 {
+        // Challenge 1
+        if currentDrawType > 7 {
             currentDrawType = 0
         }
         
@@ -38,6 +39,10 @@ class MainViewController: UIViewController {
             drawLines()
         case 5:
             drawImagesAndText()
+        case 6:
+            drawSurprisedEmoji()
+        case 7:
+            drawStarEmoji()
         default:
             break
         }
@@ -173,6 +178,84 @@ class MainViewController: UIViewController {
         }
         
         imageView.image = image
+    }
+    
+    
+    //MARK: --> Challenge 1
+    func drawSurprisedEmoji() {
+        let imgWidth = 512
+        let imgHeight = 512
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: imgWidth, height: imgHeight))
+        
+        let image = renderer.image { ctx in
+            
+            let faceWidth = imgWidth
+            let faceHeight = imgWidth
+            let faceInsets: CGFloat = 20
+            
+            drawFace(ctx: ctx.cgContext, width: faceWidth, height: faceHeight, insets: faceInsets, startX: 0, startY: 0, fillColor: UIColor.yellow.cgColor, strokeColor: UIColor.orange.cgColor)
+            
+            let eyeHorizontalMargin: CGFloat = 130
+            let eyeTopMargin: CGFloat = 150
+            let eyeWidth = 60
+            let eyeHeight = 70
+            
+            let leftEyeStartX = eyeHorizontalMargin
+            let leftEyeStartY = eyeTopMargin
+            drawEye(ctx: ctx.cgContext, width: eyeWidth, height: eyeHeight, startX: leftEyeStartX, startY: leftEyeStartY, color: UIColor.orange.cgColor)
+            
+            let rightEyeStartX = CGFloat(imgWidth) - CGFloat(eyeWidth) - eyeHorizontalMargin
+            let rightEyrStartY = eyeTopMargin
+            drawEye(ctx: ctx.cgContext, width: eyeWidth, height: eyeHeight, startX: rightEyeStartX, startY: rightEyrStartY, color: UIColor.orange.cgColor)
+            
+            let mouthWidth = 100
+            let mouthHeight = 110
+            let mouthStartx = CGFloat((imgWidth - mouthWidth) / 2)
+            let mouthStarty = CGFloat(300)
+            
+            drawMouth(ctx: ctx.cgContext, width: mouthWidth, height: mouthHeight, startX: mouthStartx, startY: mouthStarty, color: UIColor.orange.cgColor)
+        }
+        
+        imageView.image = image
+    }
+    
+    
+    func drawFace(ctx: CGContext, width: Int, height: Int, insets: CGFloat, startX: CGFloat, startY: CGFloat, fillColor: CGColor, strokeColor: CGColor) {
+        let face = CGRect(x: 0, y: 0, width: width, height: height).insetBy(dx: insets, dy: insets)
+        
+        ctx.setFillColor(UIColor.yellow.cgColor)
+        ctx.setStrokeColor(UIColor.orange.cgColor)
+        ctx.setLineWidth(5)
+        
+        ctx.translateBy(x: startX, y: startY)
+        ctx.addEllipse(in: face)
+        ctx.drawPath(using: .fillStroke)
+        ctx.translateBy(x: -startX, y: -startY)
+    }
+    
+    
+    func drawEye(ctx: CGContext, width: Int, height: Int, startX: CGFloat, startY: CGFloat, color: CGColor) {
+        let eye = CGRect(x: 0, y: 0, width: width, height: height)
+
+        ctx.setFillColor(color)
+
+        ctx.translateBy(x: startX, y: startY)
+        ctx.addEllipse(in: eye)
+        ctx.drawPath(using: .fill)
+        ctx.translateBy(x: -startX, y: -startY)
+    }
+    
+    
+    func drawMouth(ctx: CGContext, width: Int, height: Int, startX: CGFloat, startY: CGFloat, color: CGColor) {
+        let mouth = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        ctx.setFillColor(color)
+
+        ctx.translateBy(x: startX, y: startY)
+        ctx.addEllipse(in: mouth)
+        ctx.drawPath(using: .fill)
+        ctx.translateBy(x: -startX, y: -startY)
+
     }
     
     
