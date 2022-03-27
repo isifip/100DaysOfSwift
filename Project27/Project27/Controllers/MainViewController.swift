@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
         currentDrawType += 1
         
         // Challenge 1
-        if currentDrawType > 7 {
+        if currentDrawType > 8 {
             currentDrawType = 0
         }
         
@@ -43,6 +43,8 @@ class MainViewController: UIViewController {
             drawSurprisedEmoji()
         case 7:
             drawStarEmoji()
+        case 8:
+            drawTwinText()
         default:
             break
         }
@@ -299,6 +301,79 @@ class MainViewController: UIViewController {
     
     func pointOnCircle(radius: CGFloat, angle: CGFloat) -> CGPoint {
         return CGPoint(x: radius * sin(angle), y: radius * cos(angle))
+    }
+    
+    
+    //MARK: --> Challenge 2
+    func drawTwinText() {
+        let imgWidth = 512
+        let imgHeight = 512
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: imgWidth, height: imgHeight))
+        
+        // those 2 parameters alone determine the text size, and can be changed
+        let height = 150
+        let spacing = 40
+        
+        // center text vertically
+        let top: Int = (imgHeight - height) / 2
+        let bottom = top + height
+        
+        // width is proportional to height
+        let width: Int = height * 2 / 3
+        
+        // center text horizontally
+        //                          T                 W             I             N
+        var startx = (imgWidth - (width + spacing + width + spacing + spacing + width)) / 2
+        
+        let image = renderer.image { ctx in
+            drawT(ctx: ctx.cgContext, top: top, bottom: bottom, startx: startx, width: width)
+            
+            startx += width + spacing
+            drawW(ctx: ctx.cgContext, top: top, bottom: bottom, startx: startx, width: width)
+            
+            startx += width + spacing
+            drawI(ctx: ctx.cgContext, top: top, bottom: bottom, startx: startx, width: width)
+            
+            startx += spacing
+            drawN(ctx: ctx.cgContext, top: top, bottom: bottom, startx: startx, width: width)
+            
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.setLineWidth(10)
+            ctx.cgContext.setLineJoin(.round)
+            ctx.cgContext.setLineCap(.round)
+            ctx.cgContext.drawPath(using: .stroke)
+        }
+        imageView.image = image
+    }
+    
+    func drawT(ctx: CGContext, top: Int, bottom: Int, startx: Int, width: Int) {
+        ctx.move(to: CGPoint(x: startx, y: top))
+        ctx.addLine(to: CGPoint(x: startx + width, y: top))
+        ctx.move(to: CGPoint(x: startx + width/2, y: top))
+        ctx.addLine(to: CGPoint(x: startx + width/2, y: bottom))
+    }
+    
+    
+    func drawW(ctx: CGContext, top: Int, bottom: Int, startx: Int, width: Int) {
+        ctx.move(to: CGPoint(x: startx, y: top))
+        ctx.addLine(to: CGPoint(x: Double(startx) + Double(width) * 0.3, y: Double(bottom)))
+        ctx.addLine(to: CGPoint(x: Double(startx) + Double(width) * 0.5, y: Double((top + bottom) / 2)))
+        ctx.addLine(to: CGPoint(x: Double(startx) + Double(width) * 0.7, y: Double(bottom)))
+        ctx.addLine(to: CGPoint(x: startx + width, y: top))
+    }
+
+    
+    func drawI(ctx: CGContext, top: Int, bottom: Int, startx: Int, width: Int) {
+        ctx.move(to: CGPoint(x: startx, y: top))
+        ctx.addLine(to: CGPoint(x: startx, y: bottom))
+   }
+
+    
+    func drawN(ctx: CGContext, top: Int, bottom: Int, startx: Int, width: Int) {
+        ctx.move(to: CGPoint(x: startx, y: bottom))
+        ctx.addLine(to: CGPoint(x: startx, y: top))
+        ctx.addLine(to: CGPoint(x: startx + width, y: bottom))
+        ctx.addLine(to: CGPoint(x: startx + width, y: top))
     }
     
 }
