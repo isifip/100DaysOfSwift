@@ -12,10 +12,15 @@ class ViewController: UIViewController {
 
     @IBOutlet var secret: UITextView!
     
+    var doneButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Nothing to see here"
+        
+        // Challenge 1
+        doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(saveSecretMessage))
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -71,6 +76,8 @@ class ViewController: UIViewController {
     func unlockSecretMessage() {
         secret.isHidden = false
         title = "Secret revealed"
+        
+        navigationItem.rightBarButtonItem = doneButton
         
         secret.text = KeychainWrapper.standard.string(forKey: "SecretMessage") ?? ""
     }
