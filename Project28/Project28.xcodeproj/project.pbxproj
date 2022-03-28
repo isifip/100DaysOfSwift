@@ -64,6 +64,7 @@
 				C7B11BE727F1EF06004B2B7A /* SceneDelegate.swift */,
 				C7B11BE927F1EF06004B2B7A /* ViewController.swift */,
 				C7B11BF927F1EF11004B2B7A /* StoryBoards */,
+				C7B11BFE27F1F3B8004B2B7A /* KeyChain */,
 				C7B11BEE27F1EF08004B2B7A /* Assets.xcassets */,
 				C7B11BF327F1EF08004B2B7A /* Info.plist */,
 			);
@@ -75,10 +76,17 @@
 			children = (
 				C7B11BEB27F1EF06004B2B7A /* Main.storyboard */,
 				C7B11BF027F1EF08004B2B7A /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		C7B11BFE27F1F3B8004B2B7A /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
 				C7B11BFA27F1F35E004B2B7A /* KeychainItemAccessibility.swift */,
 				C7B11BFB27F1F35E004B2B7A /* KeychainWrapper.swift */,
 			);
-			path = StoryBoards;
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
