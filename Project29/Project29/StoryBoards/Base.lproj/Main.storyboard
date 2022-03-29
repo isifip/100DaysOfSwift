@@ -16,17 +16,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="5gu-Sg-dKE">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="5gu-Sg-dKE">
                                 <rect key="frame" x="20" y="10" width="1326" height="43"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="53L-2Y-ueQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="564.5" height="43"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="422" height="43"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="45" minValue="0.0" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="sk6-lV-9PR">
-                                                <rect key="frame" x="-2" y="0.0" width="517" height="44"/>
+                                                <rect key="frame" x="-2" y="0.0" width="416" height="44"/>
+                                                <connections>
+                                                    <action selector="angleChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="jhL-ha-fUx"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhn-Fx-cQX">
-                                                <rect key="frame" x="523" y="0.0" width="41.5" height="43"/>
+                                                <rect key="frame" x="422" y="0.0" width="0.0" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -34,13 +37,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1bl-Qw-oYK">
-                                        <rect key="frame" x="594.5" y="0.0" width="554" height="43"/>
+                                        <rect key="frame" x="452" y="0.0" width="422" height="43"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="125" minValue="0.0" maxValue="250" translatesAutoresizingMaskIntoConstraints="NO" id="txR-7c-PJ6">
-                                                <rect key="frame" x="-2" y="0.0" width="506.5" height="44"/>
+                                                <rect key="frame" x="-2" y="0.0" width="416" height="44"/>
+                                                <connections>
+                                                    <action selector="velocityChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="GZa-xG-ahM"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koh-dj-yUB">
-                                                <rect key="frame" x="512.5" y="0.0" width="41.5" height="43"/>
+                                                <rect key="frame" x="422" y="0.0" width="0.0" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -48,12 +54,15 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OC-jm-V0g">
-                                        <rect key="frame" x="1178.5" y="0.0" width="147.5" height="43"/>
+                                        <rect key="frame" x="904" y="0.0" width="422" height="43"/>
                                         <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                        <buttonConfiguration key="configuration" style="plain" title="LAUNCH">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="24"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="launch:" destination="BV1-FR-VrT" eventType="touchUpInside" id="wXA-XI-goc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -75,6 +84,14 @@
                             <constraint firstItem="oZq-tC-tpd" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="whs-V2-5nK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="angleLabel" destination="Nhn-Fx-cQX" id="YiC-n4-a3u"/>
+                        <outlet property="angleSlider" destination="sk6-lV-9PR" id="bzk-Px-3s2"/>
+                        <outlet property="lauchButton" destination="8OC-jm-V0g" id="RHW-58-Ucf"/>
+                        <outlet property="playerNumber" destination="oZq-tC-tpd" id="VLg-Ux-tTU"/>
+                        <outlet property="velocityLabel" destination="koh-dj-yUB" id="t2A-4C-18p"/>
+                        <outlet property="velocitySlider" destination="txR-7c-PJ6" id="AAy-Dy-ErT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
