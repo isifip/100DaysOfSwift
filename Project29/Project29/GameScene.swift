@@ -190,6 +190,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         banana.name = ""
         banana.removeFromParent()
         banana = nil
+        
+        changePlayer()
     }
     
     func changePlayer() {
@@ -200,6 +202,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         viewController?.activatePlayer(number: currentPlayer)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        guard banana != nil else { return }
+        
+        if abs(banana.position.y) > 1000 {
+            banana.removeFromParent()
+            banana = nil
+            
+            changePlayer()
+        
+        }
     }
     
 }
