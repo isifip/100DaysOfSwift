@@ -13,7 +13,7 @@ enum CollisionTypes: UInt32 {
     case player = 4
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var buildings = [BuildingNode]()
     weak var viewController: GameViewController?
@@ -28,6 +28,8 @@ class GameScene: SKScene {
         backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
         createBuildings()
         createPlayers()
+        
+        physicsWorld.contactDelegate = self
     }
     
     func createBuildings() {
@@ -122,6 +124,36 @@ class GameScene: SKScene {
     
     func deg2rad(degrees: Int) -> Double {
         return Double(degrees) * .pi / 180
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody: SKPhysicsBody
+        let secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        guard let firstNode = firstBody.node else { return }
+        guard let secondNode = secondBody.node else { return }
+        
+        if firstNode.name == "banana" && secondNode.name == "building" {
+            // more code to come
+        }
+        
+        if firstNode.name == "banana" && secondNode.name == "player1" {
+            // more code to come
+        }
+        
+        if firstNode.name == "banana" && secondNode.name == "player2" {
+            // more code to come
+        }
+        
+        
     }
     
 }
